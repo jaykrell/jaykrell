@@ -1,0 +1,53 @@
+<html>                                                                  
+<head>                                                                  
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>          
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.4.0/build/cssgrids/grids-min.css">
+<script type="text/javascript">                                         
+
+$(document).ready(function() {
+var boardWidth = 15;
+var boardHeight = 15;
+var _ = "&nbsp"; // blank
+var T = "TW"; // triple word
+var D = "DW"; // double word
+var t = "TL"; // triple letter
+var d = "DL"; // double letter
+var colors = new Object();
+colors[T] = "orange";
+colors[D] = "red";
+colors[d] = "darkBlue";
+colors[_] = "lightBlue";
+colors[t] = "green";
+var board = new Array(15);
+board[ 0] = [T,_,_,d,_,_,_,T,_,_,_,d,_,_,T];
+board[ 1] = [_,D,_,_,_,t,_,_,_,t,_,_,_,D,_];
+board[ 2] = [_,_,D,_,_,_,d,_,d,_,_,_,D,_,_];
+board[ 3] = [d,_,_,D,_,_,_,d,_,_,_,D,_,_,d];
+board[ 4] = [_,_,_,_,D,_,_,_,_,_,D,_,_,_,_];
+board[ 5] = [_,t,_,_,_,t,_,_,_,t,_,_,_,t,_];
+board[ 6] = [_,_,d,_,_,_,d,_,d,_,_,_,d,_,_];
+board[ 7] = [T,_,_,d,_,_,_,D,_,_,_,d,_,_,T];
+board[ 8] = [_,_,d,_,_,_,d,_,d,_,_,_,d,_,_];
+board[ 9] = [_,t,_,_,_,t,_,_,_,t,_,_,_,t,_];
+board[10] = [d,_,_,_,D,_,_,_,_,_,D,_,_,_,_];
+board[11] = [_,_,_,D,_,_,_,d,_,_,_,D,_,_,d];
+board[12] = [_,_,D,_,_,_,d,_,d,_,_,_,D,_,_];
+board[13] = [_,D,_,_,_,t,_,_,_,t,_,_,_,D,_];
+board[14] = [T,_,_,d,_,_,_,T,_,_,_,d,_,_,T];
+
+        for (var j = 0; j < boardHeight; ++j)
+        {
+            for (var i = 0; i < boardWidth; ++i)
+            {
+                var a = board[i][j];
+                $("<span class='yui3-u-1-24' style='border-width:1px;border-style:solid;border-color:black;text-align:center;background-color:" + colors[a] + ";color:white'>" + a + "</span>").appendTo("body");
+            }
+            $("<br>").appendTo("body");
+        }
+ });
+
+</script>
+</head>                                                                 
+<body>
+</body>                                                                 
+</html>

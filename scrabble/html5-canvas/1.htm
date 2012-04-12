@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<script type="text/javascript">
+
+var boardWidth = 15;
+var boardHeight = 15;
+var cellWidth = 25;
+var cellHeight = 25;
+var _ = " "; // blank
+var T = "T"; // triple word
+var D = "D"; // double word
+var t = "t"; // triple letter
+var d = "d"; // double letter
+var colors = new Object();
+colors[T] = "orange";
+colors[D] = "red";
+colors[d] = "darkBlue";
+colors[_] = "lightBlue";
+colors[t] = "green";
+
+var board = new Array(15);
+board[ 0] = [T,_,_,d,_,_,_,T,_,_,_,d,_,_,T];
+board[ 1] = [_,D,_,_,_,t,_,_,_,t,_,_,_,D,_];
+board[ 2] = [_,_,D,_,_,_,d,_,d,_,_,_,D,_,_];
+board[ 3] = [d,_,_,D,_,_,_,d,_,_,_,D,_,_,d];
+board[ 4] = [_,_,_,_,D,_,_,_,_,_,D,_,_,_,_];
+board[ 5] = [_,t,_,_,_,t,_,_,_,t,_,_,_,t,_];
+board[ 6] = [_,_,d,_,_,_,d,_,d,_,_,_,d,_,_];
+board[ 7] = [T,_,_,d,_,_,_,D,_,_,_,d,_,_,T];
+board[ 8] = [_,_,d,_,_,_,d,_,d,_,_,_,d,_,_];
+board[ 9] = [_,t,_,_,_,t,_,_,_,t,_,_,_,t,_];
+board[10] = [d,_,_,_,D,_,_,_,_,_,D,_,_,_,_];
+board[11] = [_,_,_,D,_,_,_,d,_,_,_,D,_,_,d];
+board[12] = [_,_,D,_,_,_,d,_,d,_,_,_,D,_,_];
+board[13] = [_,D,_,_,_,t,_,_,_,t,_,_,_,D,_];
+board[14] = [T,_,_,d,_,_,_,T,_,_,_,d,_,_,T];
+
+function draw()
+{
+    var canvas = document.getElementById("canvas");
+    if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+        for (var i = 0; i < boardWidth; ++i)
+        {
+            for (var j = 0; j < boardHeight; ++j)
+            {
+                ctx.fillStyle = colors[board[i][j]]
+                x = cellWidth * i - 1;
+                y = cellHeight * j - 1;
+                ctx.fillRect(x, y, cellWidth - 1, cellHeight - 1);
+                ctx.fillStyle = "rgb(255,255,255)";
+                x += cellWidth / 4;
+                y += cellHeight / 4 * 3;
+                switch (board[i][j])
+                {
+                    case T: ctx.fillText("TW", x, y); break;
+                    case D: ctx.fillText("DW", x, y); break;
+                    case t: ctx.fillText("TL", x, y); break;
+                    case d: ctx.fillText("DL", x, y); break;
+                    case _: break;
+                }
+            }
+        }
+    }
+}
+</script>
+<style type="text/css">
+canvas { border: 1px solid black; }
+</style>
+</head>
+<body onload="draw();">
+<canvas id="canvas" width="380" height="380"></canvas>
+</body>
+</html>
